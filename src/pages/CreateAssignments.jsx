@@ -39,11 +39,11 @@ const CreateAssignments = () => {
                         <label className="label">
                             <span className="label-text font-bold dark:text-white">Difficulty</span>
                         </label>
-                        <select name="difficulty" className=" bg-transparent input rounded-none border-b border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("difficulty", { required: true })}>
-                            <option value="">-- select --</option>
-                            <option value="easy">Easy</option>
-                            <option value="medium">Medium</option>
-                            <option value="hard">Hard</option>
+                        <select name="difficulty" className=" bg-transparent input rounded-none border-b border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary " {...register("difficulty", { required: true })}>
+                            <option className="text-black" value="">-- select --</option>
+                            <option className="text-black" value="easy">Easy</option>
+                            <option className="text-black" value="medium">Medium</option>
+                            <option className="text-black" value="hard">Hard</option>
                         </select>
                         {errors.difficulty && <span className="text-red-500">This field is required</span>}
                     </div>
