@@ -4,6 +4,10 @@ import Error from "../pages/Error";
 import Home from "../pages/Home";
 import Register from "../pages/Register";
 import Root from "../pages/Root";
+import Assignments from "../pages/Assignments";
+import CreateAssignments from "../pages/CreateAssignments";
+import PendingAssignments from "../pages/PendingAssignments";
+import PrivateRouter from "./PrivateRouter";
 
 const Router = createBrowserRouter ([
     {
@@ -22,6 +26,18 @@ const Router = createBrowserRouter ([
             {
                 path: '/register',
                 element: <Register></Register>,
+            },
+            {
+                path: '/assignments',
+                element: <Assignments></Assignments>,
+            },
+            {
+                path: '/createAssignments',
+                element: <PrivateRouter><CreateAssignments></CreateAssignments></PrivateRouter>,
+            },
+            {
+                path: '/pendingAssignments',
+                element: <PrivateRouter><PendingAssignments></PendingAssignments></PrivateRouter>,
             },
         ]
     }
