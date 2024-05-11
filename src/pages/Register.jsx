@@ -13,7 +13,7 @@ const MySwal = withReactContent(Swal)
 
 const Register = () => {
     const { userRegistration, updateUserProfile } = useContext(AuthContext);
-    const { register, handleSubmit, formState: { errors }, } = useForm()
+    const { register, handleSubmit, formState: { errors }, } = useForm();
     const [showPass, setShowPass] = useState(false);
     const [errorMessage, setErrorMessage] = useState(null);
     const location = useLocation();
