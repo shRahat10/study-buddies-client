@@ -18,7 +18,7 @@ const CreateAssignments = () => {
             <Helmet>
                 <title>Create Assignment</title>
             </Helmet>
-            <h1 className="text-2xl font-bold text-center mb-6">Create Assignment</h1>
+            <h1 className="text-2xl font-bold text-center mb-6 dark:text-white">Create Assignment</h1>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-10 m-10 border border-primary bg-slate-50 dark:bg-transparent dark:text-white p-10 rounded-lg">
                 <div className=" grid grid-cols-2 gap-10">
                     <div className="form-control">
