@@ -53,8 +53,8 @@ const CreateAssignments = () => {
                 <title>Create Assignment</title>
             </Helmet>
             <h1 className="text-2xl font-bold text-center mb-6 dark:text-white">Create Assignment</h1>
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-10 m-10 border border-primary bg-slate-50 dark:bg-transparent dark:text-white p-10 rounded-lg">
-                <div className=" grid grid-cols-2 gap-10">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-10 md:m-10 border border-primary bg-slate-50 dark:bg-transparent dark:text-white p-10 rounded-lg">
+                <div className=" grid grid-cols-1 md:grid-cols-2 gap-10">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-bold dark:text-white">Title</span>
@@ -70,7 +70,7 @@ const CreateAssignments = () => {
                         {errors.photoURL && <span className="text-red-500">This field is required</span>}
                     </div>
                 </div>
-                <div className=" grid grid-cols-3 gap-10">
+                <div className=" grid grid-cols-1 md:grid-cols-3 gap-10">
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text font-bold dark:text-white">Marks</span>
