@@ -11,6 +11,7 @@ const githubProvider = new GithubAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [data, setData] = useState(null);
 
     const googleSignIn = () => {
         // setLoading(true);
@@ -65,8 +66,14 @@ const AuthProvider = ({ children }) => {
         };
     }, []);
 
+    useEffect(() => {
+        fetch(BASE_URL + '/study-buddies')
+            .then(res => res.json())
+            .then(data => setData(data))
+    }, [])
+
     const authInfo = {
-        user, loading, updateUserProfile, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
+        data, user, loading, updateUserProfile, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
     }
 
     return (
