@@ -3,14 +3,45 @@ import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet-async";
+import { BASE_URL } from "../constent/constent";
 
 const CreateAssignments = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [dueDate, setDueDate] = useState(null);
 
     const onSubmit = (data) => {
-        const { title, description, marks, difficulty } = data;
-
+        fetch(BASE_URL + '/study-buddies', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Assignment Successfully Created',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    }).then(() => {
+                        fetch(BASE_URL + '/study-buddies')
+                            .then(res => res.json())
+                            .then(updatedData => {
+                                setData(updatedData);
+                            })
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error creating assignment:', error);
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Failed to create assignment',
+                    icon: 'error',
+                });
+            });
     };
 
     return (
