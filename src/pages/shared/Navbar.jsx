@@ -75,7 +75,7 @@ const Navbar = () => {
             >
                 Home
             </NavLink>
-            <NavLink to={"/"} className={({ isActive }) =>
+            <NavLink to={"/assignments"} className={({ isActive }) =>
                 isActive
                     ? "border-b-2 border-primary font-bold text-primary"
                     : " "
@@ -83,22 +83,29 @@ const Navbar = () => {
             >
                 Assignments
             </NavLink>
-            <NavLink to={"/"} className={({ isActive }) =>
-                isActive
-                    ? "border-b-2 border-primary font-bold text-primary"
-                    : " "
+            {
+                user &&
+                <NavLink to={"/createAssignments"} className={({ isActive }) =>
+                    isActive
+                        ? "border-b-2 border-primary font-bold text-primary"
+                        : " "
+                }
+                >
+                    Create Assignments
+                </NavLink>
             }
-            >
-                Create Assignments
-            </NavLink>
-            <NavLink to={"/"} className={({ isActive }) =>
-                isActive
-                    ? "border-b-2 border-primary font-bold text-primary"
-                    : " "
+            {
+                user &&
+                <NavLink to={"/pendingAssignments"} className={({ isActive }) =>
+                    isActive
+                        ? "border-b-2 border-primary font-bold text-primary"
+                        : " "
+                }
+                >
+                    Pending Assignments
+                </NavLink>
             }
-            >
-                Pending Assignments
-            </NavLink>
+
 
         </>
     );

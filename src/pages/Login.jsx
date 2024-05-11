@@ -60,7 +60,7 @@ const Login = () => {
     return (
         <div className="md:w-[600px] mx-auto lg:mt-10 dark:text-white">
         <Helmet>
-            <title>Trip Topia | Login</title>
+            <title>Study Buddies | Login</title>
         </Helmet>
             <form onSubmit={handleSubmit(onSubmit)} className=" space-y-6">
                 <div className="form-control">
