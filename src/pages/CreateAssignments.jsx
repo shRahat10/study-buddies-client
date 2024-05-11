@@ -4,12 +4,15 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet-async";
 import { BASE_URL } from "../constent/constent";
+import Swal from 'sweetalert2';
 
 const CreateAssignments = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [dueDate, setDueDate] = useState(null);
 
     const onSubmit = (data) => {
+        data.dueDate = dueDate;
+
         fetch(BASE_URL + '/study-buddies', {
             method: 'POST',
             headers: {
@@ -17,7 +20,7 @@ const CreateAssignments = () => {
             },
             body: JSON.stringify(data)
         })
-        .then(res => res.json())
+            .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
                     Swal.fire({
@@ -61,6 +64,15 @@ const CreateAssignments = () => {
                     </div>
                     <div className="form-control">
                         <label className="label">
+                            <span className="label-text font-bold dark:text-white">Photo URL</span>
+                        </label>
+                        <input name="photoURL" type="text" className="bg-transparent input rounded-none border-b border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("photoURL", { required: true })} />
+                        {errors.photoURL && <span className="text-red-500">This field is required</span>}
+                    </div>
+                </div>
+                <div className=" grid grid-cols-3 gap-10">
+                    <div className="form-control">
+                        <label className="label">
                             <span className="label-text font-bold dark:text-white">Marks</span>
                         </label>
                         <input name="marks" type="number" className="bg-transparent input rounded-none border-b border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("marks", { required: true })} />
@@ -82,6 +94,7 @@ const CreateAssignments = () => {
                         <label className="label">
                             <span className="label-text font-bold dark:text-white">Due Date</span>
                         </label>
+                        
                         <DatePicker
                             selected={dueDate}
                             onChange={(date) => setDueDate(date)}
