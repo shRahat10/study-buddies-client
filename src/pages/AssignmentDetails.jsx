@@ -1,15 +1,19 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
-
+import AssignmentSubmissionForm from "./AssignmentSubmissionForm ";
 
 const AssignmentDetails = () => {
     const { id } = useParams();
     const { data, user } = useContext(AuthContext);
+    const [showSubmissionModal, setShowSubmissionModal] = useState(false);
 
     const details = data?.find((e) => e._id === id);
     const formattedDate = new Date(details.dueDate).toISOString().split('T')[0];
 
+    const openSubmissionModal = () => {
+        setShowSubmissionModal(true);
+    }
 
     return (
         <div className="border p-8 rounded bg-gray-100 dark:bg-transparent dark:text-white">
@@ -24,9 +28,12 @@ const AssignmentDetails = () => {
                 </div>
             </div>
             <p className="mb-2"><span className=" font-semibold">Description:</span> {details.description}</p>
-            <button className=" bg-primary p-2 text-white rounded">Take Assignment</button>
+            {/* Button to open the assignment submission modal */}
+            <button className="bg-primary p-2 text-white rounded" onClick={openSubmissionModal}>Take Assignment</button>
+            
+            {/* Modal for assignment submission */}
+            {showSubmissionModal && <AssignmentSubmissionForm onClose={() => setShowSubmissionModal(false)} />}
         </div>
-
     );
 };
 
