@@ -22,7 +22,7 @@ const AssignmentMarking = ({ onClose, submittedData }) => {
             ...submittedData,
             gottenMarks: data.gottenMarks,
             feedback: data.feedback,
-            status: 'marked'
+            status: 'completed'
         };
     
         fetch(BASE_URL + `/submissions/${submittedData._id}`, {
