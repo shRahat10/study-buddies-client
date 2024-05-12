@@ -3,6 +3,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 const Assignments = () => {
     const { data } = useContext(AuthContext);
@@ -47,7 +48,7 @@ const Assignments = () => {
                                 <p><TiEdit size={25} /></p>
                             </div>
                             <div className="flex justify-between items-center mt-3">
-                                <p className="text-sm text-blue-500">View Assignment</p>
+                                <Link to={`/assignmentDetails/${e._id}`}><p className="text-sm text-blue-500">View Assignment</p></Link>
                                 <p className="text-red-500"><RiDeleteBin2Line size={25} /></p>
                             </div>
                         </div>
