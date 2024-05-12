@@ -17,7 +17,7 @@ const AssignmentSubmissionForm = ({ onClose, data, user }) => {
         e.name = user.displayName;
         e.email = user.email;
         e.status = 'pending';
-        e.gottenMarks = null;
+        e.obtainedMarks = null;
         e.feedback = null;
 
         console.log(e);

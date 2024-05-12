@@ -9,7 +9,7 @@ const AssignmentMarking = ({ onClose, submittedData }) => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = (data) => {
-        if (data.gottenMarks > submittedData.totalMarks) {
+        if (data.obtainedMarks > submittedData.totalMarks) {
             Swal.fire({
                 title: 'Error',
                 text: 'Marks cannot exceed the total marks',
@@ -20,7 +20,7 @@ const AssignmentMarking = ({ onClose, submittedData }) => {
     
         const markedSubmission = {
             ...submittedData,
-            gottenMarks: data.gottenMarks,
+            obtainedMarks: data.obtainedMarks,
             feedback: data.feedback,
             status: 'completed'
         };
@@ -91,8 +91,8 @@ const AssignmentMarking = ({ onClose, submittedData }) => {
                             <label className="label">
                                 <span className="label-text font-bold dark:text-white">Marks</span>
                             </label>
-                            <input name="gottenMarks" type="number" className="bg-transparent input rounded border border-gray-300 focus:outline-none focus:border focus:border-primary" {...register("gottenMarks", { required: true })} />
-                            {errors.gottenMarks && <span className="text-red-500">Marks are required</span>}
+                            <input name="obtainedMarks" type="number" className="bg-transparent input rounded border border-gray-300 focus:outline-none focus:border focus:border-primary" {...register("obtainedMarks", { required: true })} />
+                            {errors.obtainedMarks && <span className="text-red-500">Marks are required</span>}
                         </div>
                         <div className="form-control">
                             <label className="label">
