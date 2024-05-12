@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { Helmet } from "react-helmet-async";
 import { BASE_URL } from "../constent/constent";
 import Swal from 'sweetalert2';
+import { AuthContext } from "../provider/AuthProvider";
 
 const CreateAssignments = () => {
+    const { user } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [dueDate, setDueDate] = useState(null);
 
     const onSubmit = (data) => {
         data.dueDate = dueDate;
+        data.email = user.email;
 
         fetch(BASE_URL + '/study-buddies', {
             method: 'POST',
