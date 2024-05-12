@@ -28,6 +28,7 @@ const AssignmentDetails = () => {
                 </div>
             </div>
             <p className="mb-2"><span className=" font-semibold">Description:</span> {details.description}</p>
+            
             {/* Button to open the assignment submission modal */}
             <button className="bg-primary p-2 text-white rounded" onClick={openSubmissionModal}>Take Assignment</button>
             
