@@ -73,7 +73,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const authInfo = {
-        data, user, loading, updateUserProfile, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
+        data, setData, user, loading, updateUserProfile, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
     }
 
     return (
