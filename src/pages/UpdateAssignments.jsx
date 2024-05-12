@@ -17,52 +17,41 @@ const UpdateAssignments = () => {
     const [dueDate, setDueDate] = useState(filteredData.dueDate);
 
     const onSubmit = (data) => {
-        if (filteredData?.email !== user?.email) {
-            Swal.fire({
-                title: 'Unauthorized',
-                text: "You cannot update someone else's assignment!",
-                icon: 'warning',
-                confirmButtonText: 'Ok'
-            })
-        }
+        data.dueDate = dueDate;
+        data.email = user.email;
 
-        else {
-            data.dueDate = dueDate;
-            data.email = user.email;
-
-            fetch(BASE_URL + `/study-buddies/${id}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-                .then(res => res.json())
-                .then(updatedData => {
-                    if (updatedData.modifiedCount > 0) {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Assignment Successfully Updated',
-                            icon: 'success',
-                            confirmButtonText: 'Ok'
-                        }).then(() => {
-                            fetch(BASE_URL + '/study-buddies')
-                                .then(res => res.json())
-                                .then(updatedData => {
-                                    setData(updatedData);
-                                })
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error updating assignment:', error);
+        fetch(BASE_URL + `/study-buddies/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+            .then(res => res.json())
+            .then(updatedData => {
+                if (updatedData.modifiedCount > 0) {
                     Swal.fire({
-                        title: 'Error',
-                        text: 'Failed to update assignment',
-                        icon: 'error',
+                        title: 'Success!',
+                        text: 'Assignment Successfully Updated',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    }).then(() => {
+                        fetch(BASE_URL + '/study-buddies')
+                            .then(res => res.json())
+                            .then(updatedData => {
+                                setData(updatedData);
+                            })
                     });
+                }
+            })
+            .catch(error => {
+                console.error('Error updating assignment:', error);
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Failed to update assignment',
+                    icon: 'error',
                 });
-        }
+            });
     };
 
     return (
