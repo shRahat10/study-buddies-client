@@ -17,41 +17,52 @@ const UpdateAssignments = () => {
     const [dueDate, setDueDate] = useState(filteredData.dueDate);
 
     const onSubmit = (data) => {
-        data.dueDate = dueDate;
-        data.email = user.email;
-
-        fetch(BASE_URL + `/study-buddies/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        })
-            .then(res => res.json())
-            .then(updatedData => {
-                if (updatedData.modifiedCount > 0) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Assignment Successfully Updated',
-                        icon: 'success',
-                        confirmButtonText: 'Ok'
-                    }).then(() => {
-                        fetch(BASE_URL + '/study-buddies')
-                            .then(res => res.json())
-                            .then(updatedData => {
-                                setData(updatedData);
-                            })
-                    });
-                }
+        if (filteredData?.email !== user?.email) {
+            Swal.fire({
+                title: 'Unauthorized',
+                text: "You cannot update someone else's assignment!",
+                icon: 'warning',
+                confirmButtonText: 'Ok'
             })
-            .catch(error => {
-                console.error('Error updating assignment:', error);
-                Swal.fire({
-                    title: 'Error',
-                    text: 'Failed to update assignment',
-                    icon: 'error',
+        }
+
+        else {
+            data.dueDate = dueDate;
+            data.email = user.email;
+
+            fetch(BASE_URL + `/study-buddies/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(res => res.json())
+                .then(updatedData => {
+                    if (updatedData.modifiedCount > 0) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Assignment Successfully Updated',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        }).then(() => {
+                            fetch(BASE_URL + '/study-buddies')
+                                .then(res => res.json())
+                                .then(updatedData => {
+                                    setData(updatedData);
+                                })
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error updating assignment:', error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'Failed to update assignment',
+                        icon: 'error',
+                    });
                 });
-            });
+        }
     };
 
     return (
@@ -108,7 +119,7 @@ const UpdateAssignments = () => {
                             className="w-full bg-transparent input rounded-none border-b border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary"
                             dateFormat="yyyy-MM-dd"
                             autoComplete="off"
-                            minDate={new Date()}/>
+                            minDate={new Date()} />
                         {errors.date && <span className="text-red-500">This field is required</span>}
                     </div>
                 </div>
