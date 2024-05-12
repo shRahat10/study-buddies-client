@@ -73,6 +73,12 @@ const AuthProvider = ({ children }) => {
             .then(data => setData(data))
     }, [])
 
+    useEffect(() => {
+        fetch(BASE_URL + '/submissions')
+            .then(res => res.json())
+            .then(data => setSubmissions(data))
+    }, [])
+
     const authInfo = {
         data, setData, submissions, setSubmissions, user, loading, updateUserProfile, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
     }
