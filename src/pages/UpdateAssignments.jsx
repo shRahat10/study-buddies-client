@@ -13,8 +13,8 @@ const UpdateAssignments = () => {
     const { id } = useParams();
     const { user, data, setData } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const [dueDate, setDueDate] = useState(null);
     const filteredData = data?.find((e) => e._id === id);
+    const [dueDate, setDueDate] = useState(filteredData.dueDate);
 
     const onSubmit = (data) => {
         data.dueDate = dueDate;
@@ -28,8 +28,8 @@ const UpdateAssignments = () => {
             body: JSON.stringify(data)
         })
             .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
+            .then(updatedData => {
+                if (updatedData.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Success!',
                         text: 'Assignment Successfully Updated',
@@ -107,10 +107,8 @@ const UpdateAssignments = () => {
                             onChange={(date) => setDueDate(date)}
                             className="w-full bg-transparent input rounded-none border-b border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary"
                             dateFormat="yyyy-MM-dd"
-                            placeholderText={filteredData?.dueDate ? new Date(filteredData?.dueDate).toISOString().split('T')[0] : ''}
                             autoComplete="off"
-                            minDate={new Date()}
-                        />
+                            minDate={new Date()}/>
                         {errors.date && <span className="text-red-500">This field is required</span>}
                     </div>
                 </div>
@@ -118,11 +116,11 @@ const UpdateAssignments = () => {
                     <label className="label">
                         <span className="label-text font-bold dark:text-white">Description</span>
                     </label>
-                    <input name="description" type="text" defaultValue={filteredData.description} className="bg-transparent input rounded-none border-b border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("description", { required: true })} />
+                    <input name="description" type="text" defaultValue={filteredData?.description} className="bg-transparent input rounded-none border-b border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("description", { required: true })} />
                     {errors.description && <span className="text-red-500">This field is required</span>}
                 </div>
                 <div className="form-control mt-6">
-                    <button type="submit" className="btn text-white bg-primary hover:bg-transparent hover:border hover:border-primary hover:text-primary transition duration-300 ease-in-out">Create Assignment</button>
+                    <button type="submit" className="btn text-white bg-primary hover:bg-transparent hover:border hover:border-primary hover:text-primary transition duration-300 ease-in-out">Update Assignment</button>
                 </div>
             </form>
         </div>
