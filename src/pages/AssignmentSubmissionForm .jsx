@@ -13,7 +13,11 @@ const AssignmentSubmissionForm = ({ onClose, data, user }) => {
 
     const onSubmit = (e) => {
         e.title = data.title;
+        e.marks = data.marks;
+        e.name = user.displayName;
         e.email = user.email;
+        e.status = 'pending';
+
         console.log(e);
         fetch(BASE_URL + '/submissions', {
             method: 'POST',
