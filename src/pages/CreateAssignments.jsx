@@ -105,8 +105,7 @@ const CreateAssignments = () => {
                             dateFormat="yyyy-MM-dd"
                             placeholderText="Select Due Date"
                             autoComplete="off"
-                            minDate={new Date()}
-                        />
+                            minDate={new Date()}/>
                         {errors.date && <span className="text-red-500">This field is required</span>}
                     </div>
                 </div>
