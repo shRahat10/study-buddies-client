@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import { AuthContext } from "../provider/AuthProvider";
 
 const CreateAssignments = () => {
-    const { user } = useContext(AuthContext);
+    const { user, setData } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [dueDate, setDueDate] = useState(null);
 
