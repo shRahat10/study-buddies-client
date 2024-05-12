@@ -4,9 +4,11 @@ import { RiDeleteBin2Line } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { BASE_URL } from "../constent/constent";
 
 const Assignments = () => {
-    const { data } = useContext(AuthContext);
+    const { data, setData } = useContext(AuthContext);
     const [filter, setFilter] = useState("all");
 
     const filteredAssignments = data?.filter((assignment) => {
@@ -16,6 +18,43 @@ const Assignments = () => {
             return assignment.difficulty === filter;
         }
     });
+
+    const handleDelete = (id) =>{
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(BASE_URL + `/study-buddies/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(deletedData => {
+                        if (deletedData.deletedCount > 0) {
+                            setData(prevData => prevData.filter(item => item._id !== id));
+                            Swal.fire(
+                                'Deleted!',
+                                'Your assignment has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error deleting assignment:', error);
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Failed to delete assignment',
+                            icon: 'error',
+                        });
+                    });
+            }
+        })
+    }
 
     return (
         <>
@@ -49,7 +88,7 @@ const Assignments = () => {
                             </div>
                             <div className="flex justify-between items-center mt-3">
                                 <Link to={`/assignmentDetails/${e._id}`}><p className="text-sm text-blue-500">View Assignment</p></Link>
-                                <p className="text-red-500"><RiDeleteBin2Line size={25} /></p>
+                                <p onClick={()=> handleDelete(e._id)} className="text-red-500"><RiDeleteBin2Line size={25} /></p>
                             </div>
                         </div>
                     </div>
