@@ -32,7 +32,7 @@ const AssignmentDetails = () => {
             <button className="bg-primary p-2 text-white rounded" onClick={openSubmissionModal}>Take Assignment</button>
             
             {/* Modal for assignment submission */}
-            {showSubmissionModal && <AssignmentSubmissionForm onClose={() => setShowSubmissionModal(false)} />}
+            {showSubmissionModal && <AssignmentSubmissionForm data={details} user={user} onClose={() => setShowSubmissionModal(false)} />}
         </div>
     );
 };
