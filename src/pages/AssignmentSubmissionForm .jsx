@@ -1,14 +1,53 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { BASE_URL } from "../constent/constent";
+import { AuthContext } from "../provider/AuthProvider";
+import Swal from 'sweetalert2';
 
-const AssignmentSubmissionForm = ({ onClose }) => {
+const AssignmentSubmissionForm = ({ onClose, data, user }) => {
+    const { submissions, setSubmissions } = useContext(AuthContext);
     const [pdfDocLink, setPdfDocLink] = useState("");
     const [note, setNote] = useState("");
     const { register, handleSubmit, formState: { errors }, } = useForm();
+    
 
-
-    const onSubmit = (data) => {
-        const { name, photoUrl, email, password } = data;
+    const onSubmit = (e) => {
+        e.title = data.title;
+        e.email = user.email;
+        console.log(e);
+        fetch(BASE_URL + '/submissions', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(e)
+        })
+        .then(res => res.json())
+            .then(e => {
+                if (e.insertedId) {
+                    Swal.fire({
+                        title: 'Submitted!',
+                        text: 'Assignment submitted successfully',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    })
+                    .then(() => {
+                        fetch(BASE_URL + '/submissions')
+                            .then(res => res.json())
+                            .then(updatedData => {
+                                setSubmissions(updatedData);
+                            })
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error adding tourist spot:', error);
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Failed to add tourist spot',
+                    icon: 'error',
+                });
+            });
         onClose();
     }
 

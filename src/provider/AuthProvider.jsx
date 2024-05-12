@@ -12,6 +12,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null);
+    const [submissions, setSubmissions] = useState(null);
 
     const googleSignIn = () => {
         // setLoading(true);
@@ -73,7 +74,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const authInfo = {
-        data, setData, user, loading, updateUserProfile, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
+        data, setData, submissions, setSubmissions, user, loading, updateUserProfile, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
     }
 
     return (
