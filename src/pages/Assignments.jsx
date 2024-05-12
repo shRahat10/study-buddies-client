@@ -35,7 +35,7 @@ const Assignments = () => {
                 {filteredAssignments?.map((e, idx) => (
                     <div key={idx} className="relative dark:text-white shadow-md">
                         <img className="h-38 md:h-28 border-t border-x w-full rounded-t" src={e.photoURL} alt="" />
-                        <p className="absolute top-0 left-0 text-sm font-semibold text-white bg-blue-500 px-2 py-1">{e.marks}</p>
+                        <p className="absolute top-0 left-0 rounded-tl text-sm font-semibold text-white bg-blue-500 px-2 py-1">{e.marks}</p>
                         <div className="border-b border-x p-3 rounded-b">
                             <h1 className="font-semibold h-14">{e.title}</h1>
                             <div className=" flex justify-between">
