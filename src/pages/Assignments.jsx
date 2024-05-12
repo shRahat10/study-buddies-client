@@ -84,7 +84,7 @@ const Assignments = () => {
                                     {e.difficulty === 'medium' && <p className="text-sm font-semibold text-white bg-yellow-500 w-20 text-center py-1">{e.difficulty}</p>}
                                     {e.difficulty === 'hard' && <p className="text-sm font-semibold text-white bg-red-500 w-20 text-center py-1">{e.difficulty}</p>}
                                 </div>
-                                <p><TiEdit size={25} /></p>
+                                <Link to={`/updateAssignments/${e._id}`}><p><TiEdit size={25} /></p></Link>
                             </div>
                             <div className="flex justify-between items-center mt-3">
                                 <Link to={`/assignmentDetails/${e._id}`}><p className="text-sm text-blue-500">View Assignment</p></Link>
