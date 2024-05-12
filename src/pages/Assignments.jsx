@@ -38,17 +38,17 @@ const Assignments = () => {
                         <p className="absolute top-0 left-0 text-sm font-semibold text-white bg-blue-500 px-2 py-1">{e.marks}</p>
                         <div className="border-b border-x p-3 rounded-b">
                             <h1 className="font-semibold h-14">{e.title}</h1>
-                            <div>
-                                {e.difficulty === 'easy' && <p className="text-sm font-semibold text-white bg-green-500 w-20 text-center py-1">{e.difficulty}</p>}
-                                {e.difficulty === 'medium' && <p className="text-sm font-semibold text-white bg-yellow-500 w-20 text-center py-1">{e.difficulty}</p>}
-                                {e.difficulty === 'hard' && <p className="text-sm font-semibold text-white bg-red-500 w-20 text-center py-1">{e.difficulty}</p>}
+                            <div className=" flex justify-between">
+                                <div>
+                                    {e.difficulty === 'easy' && <p className="text-sm font-semibold text-white bg-green-500 w-20 text-center py-1">{e.difficulty}</p>}
+                                    {e.difficulty === 'medium' && <p className="text-sm font-semibold text-white bg-yellow-500 w-20 text-center py-1">{e.difficulty}</p>}
+                                    {e.difficulty === 'hard' && <p className="text-sm font-semibold text-white bg-red-500 w-20 text-center py-1">{e.difficulty}</p>}
+                                </div>
+                                <p><TiEdit size={25} /></p>
                             </div>
                             <div className="flex justify-between items-center mt-3">
                                 <p className="text-sm text-blue-500">View Assignment</p>
-                                <div className="flex gap-2 justify-end">
-                                    <p><TiEdit size={25} /></p>
-                                    <p className="text-red-500"><RiDeleteBin2Line size={25} /></p>
-                                </div>
+                                <p className="text-red-500"><RiDeleteBin2Line size={25} /></p>
                             </div>
                         </div>
                     </div>
