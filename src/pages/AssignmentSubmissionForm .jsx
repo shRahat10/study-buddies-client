@@ -58,7 +58,7 @@ const AssignmentSubmissionForm = ({ onClose, data, user }) => {
     return (
         <div className="fixed top-0 left-0 w-full h-full flex justify-center items-center">
             <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex justify-center items-center">
-                <div className="bg-white p-8 rounded w-96 md:w-3/4 lg:w-1/2 xl:w-2/3 transform scale-110 md:scale-125">
+                <div className="bg-white dark:bg-slate-900 p-8 rounded w-96 md:w-3/4 lg:w-1/2 xl:w-2/3 transform scale-110 md:scale-125">
                     <h2 className="text-2xl font-semibold mb-6">Submit Assignment</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control">
