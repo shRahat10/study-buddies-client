@@ -1,13 +1,11 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BASE_URL } from "../constent/constent";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from 'sweetalert2';
 
 const AssignmentSubmissionForm = ({ onClose, data, user }) => {
-    const { submissions, setSubmissions } = useContext(AuthContext);
-    const [pdfDocLink, setPdfDocLink] = useState("");
-    const [note, setNote] = useState("");
+    const { setSubmissions } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, } = useForm();
     
 
