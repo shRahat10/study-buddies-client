@@ -16,7 +16,7 @@ const MyAttemptedAssignments = () => {
     };
 
     return (
-        <>
+        <div className=" dark:text-white">
             <h1 className="text-center font-bold text-2xl mb-6">My Assignments</h1>
 
             <div className="grid grid-cols-12 gap-2 font-bold border-b-2 text-xs md:text-base">
@@ -44,7 +44,7 @@ const MyAttemptedAssignments = () => {
             {
                 isModalOpen && (
                     <div className="fixed top-0 left-0 w-full h-full bg-gray-800 bg-opacity-50 flex justify-center items-center z-50">
-                        <div className="bg-white p-8 pt-12 rounded relative">
+                        <div className="bg-white dark:bg-slate-900 p-8 pt-12 rounded relative">
                             <button onClick={() => toggleModal("")} className="absolute top-0 right-0 m-2 text-red-500 hover:text-red-700">
                                 <IoMdCloseCircle size={30} />
                             </button>
@@ -54,7 +54,7 @@ const MyAttemptedAssignments = () => {
                 )
             }
 
-        </>
+        </div>
     );
 };
 
