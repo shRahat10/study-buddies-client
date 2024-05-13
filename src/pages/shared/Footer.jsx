@@ -1,7 +1,6 @@
 import { FiFacebook } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import logo from "../../assets/images/logo.svg"
 import { AuthContext } from "../../provider/AuthProvider";
