@@ -2,9 +2,12 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { GrDocumentPdf } from "react-icons/gr";
 import { IoMdCloseCircle } from "react-icons/io";
+import { FaRegEdit } from "react-icons/fa";
+import Swal from "sweetalert2";
+import userIcon from "../assets/images/userIcon.webp"
 
 const MyAttemptedAssignments = () => {
-    const { submissions, user } = useContext(AuthContext);
+    const { submissions, user, updateUserProfile } = useContext(AuthContext);
     const filteredData = submissions?.filter((data) => data.email === user.email);
 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -15,8 +18,46 @@ const MyAttemptedAssignments = () => {
         setIsModalOpen(!isModalOpen);
     };
 
+    const handleEditProfile = () => {
+        Swal.fire({
+            title: 'Edit Profile',
+            html:
+                `<input id="swal-input-name" class="swal2-input w-3/5 md:w-4/5" placeholder="Name" value="${user.displayName}">` +
+                `<input id="swal-input-photoUrl" class="swal2-input w-3/5 md:w-4/5" placeholder="Photo URL" value="${user.photoURL}">`,
+            focusConfirm: false,
+            preConfirm: () => {
+                const name = Swal.getPopup().querySelector('#swal-input-name').value;
+                const photoUrl = Swal.getPopup().querySelector('#swal-input-photoUrl').value;
+                return updateUserProfile(name, photoUrl)
+                    .then(() => {
+                        Swal.fire({
+                            title: 'Profile Updated!',
+                            icon: 'success',
+                        });
+                    })
+                    .catch((error) => {
+                        console.error('Error updating profile:', error);
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'Failed to update profile',
+                            icon: 'error',
+                        });
+                    });
+            }
+        });
+    };
+
     return (
         <div className=" dark:text-white">
+            <div className="relative w-fit mx-auto mb-20 text-center">
+                <img className="w-36 h-36 rounded-full object-center object-cover mx-auto mb-4" src={user.photoURL ? user.photoURL : userIcon} alt="" />
+                <h1 className="text-xl font-bold text-gray-700 dark:text-white">{user.displayName}</h1>
+                <p className="text-gray-700 dark:text-white">{user.email}</p>
+                <button onClick={handleEditProfile} className="p-2 absolute top-0 right-0 dark:text-white">
+                    <FaRegEdit size={23} />
+                </button>
+            </div>
+
             <h1 className="text-center font-bold text-2xl mb-6">My Assignments</h1>
 
             <div className="grid grid-cols-12 gap-2 font-bold border-b-2 text-xs md:text-base">
@@ -48,7 +89,7 @@ const MyAttemptedAssignments = () => {
                             <button onClick={() => toggleModal("")} className="absolute top-0 right-0 m-2 text-red-500 hover:text-red-700">
                                 <IoMdCloseCircle size={30} />
                             </button>
-                            <iframe className=" w-72 md:w-[600px] lg:w-[800px]" title="PDF Preview" src={pdfLink}  height="600px" />
+                            <iframe className=" w-72 md:w-[600px] lg:w-[800px]" title="PDF Preview" src={pdfLink} height="600px" />
                         </div>
                     </div>
                 )
