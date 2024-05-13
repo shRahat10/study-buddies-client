@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { BASE_URL } from "../constent/constent";
 import { AuthContext } from "../provider/AuthProvider";
@@ -7,9 +7,9 @@ import Swal from 'sweetalert2';
 const AssignmentMarking = ({ onClose, submittedData }) => {
     const { setSubmissions } = useContext(AuthContext);
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-
+    
     const onSubmit = (data) => {
-        if (data.obtainedMarks > submittedData.totalMarks) {
+        if (parseInt(data.obtainedMarks) > parseInt(submittedData.totalMarks)) { 
             Swal.fire({
                 title: 'Error',
                 text: 'Marks cannot exceed the total marks',
@@ -17,6 +17,7 @@ const AssignmentMarking = ({ onClose, submittedData }) => {
             });
             return;
         }
+        
     
         const markedSubmission = {
             ...submittedData,
