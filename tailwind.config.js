@@ -12,7 +12,7 @@ export default {
       },
       colors: {
         primary: '#5AB2FF',
-        footer: '#1C1678'
+        footer: '#393E46'
       }
     },
   },
