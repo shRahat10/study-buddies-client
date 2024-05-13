@@ -14,7 +14,7 @@ const Error = () => {
     return (
         <div>
             <Helmet>
-                <title>Trip Topia | Error</title>
+                <title>Study Buddies | Error</title>
             </Helmet>
             <div className="flex flex-col justify-center items-center space-y-5 mt-20">
                 {View}
