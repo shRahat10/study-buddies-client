@@ -48,7 +48,7 @@ const MyAttemptedAssignments = () => {
                             <button onClick={() => toggleModal("")} className="absolute top-0 right-0 m-2 text-red-500 hover:text-red-700">
                                 <IoMdCloseCircle size={30} />
                             </button>
-                            <iframe title="PDF Preview" src={pdfLink} width="800px" height="600px" />
+                            <iframe className=" w-72 md:w-[600px] lg:w-[800px]" title="PDF Preview" src={pdfLink}  height="600px" />
                         </div>
                     </div>
                 )
