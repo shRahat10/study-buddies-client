@@ -17,7 +17,7 @@ const PendingAssignments = () => {
     }
 
     return (
-        <div>
+        <div className="dark:text-white">
             <div className="grid grid-cols-4 items-center border-b-2 py-4 font-bold">
                 <h1>Title</h1>
                 <p className="place-self-center">Marks</p>
@@ -25,7 +25,7 @@ const PendingAssignments = () => {
             </div>
             {
                 pendingAssignments?.map((assignment, idx) => (
-                    <div key={idx} className="grid grid-cols-4 items-center border-b py-4">
+                    <div key={idx} className="grid grid-cols-4 items-center border-b py-4 ">
                         <h1>{assignment.title}</h1>
                         <p className="place-self-center">{assignment.totalMarks}</p>
                         <p className="place-self-center">{assignment.name}</p>
