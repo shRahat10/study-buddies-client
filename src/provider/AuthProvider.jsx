@@ -14,6 +14,7 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null);
     const [submissions, setSubmissions] = useState(null);
+    const [noOfPages , setNoOfPages] = useState(null);
 
     const googleSignIn = () => {
         // setLoading(true);
@@ -92,7 +93,10 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         fetch(BASE_URL + '/study-buddies')
             .then(res => res.json())
-            .then(data => setData(data))
+            .then(data => {
+                setData(data)
+                setNoOfPages(Math.ceil(data.length / 12))
+            })
     }, [])
 
     useEffect(() => {
@@ -102,7 +106,7 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     const authInfo = {
-        data, setData, submissions, setSubmissions, user, loading, updateUserProfile, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
+        data, setData, noOfPages, submissions, setSubmissions, user, loading, updateUserProfile, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
     }
 
     return (

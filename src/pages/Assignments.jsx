@@ -6,10 +6,25 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { BASE_URL } from "../constent/constent";
+import { FaArrowAltCircleLeft, FaArrowAltCircleRight  } from "react-icons/fa";
 
 const Assignments = () => {
-    const { data, setData, user } = useContext(AuthContext);
+    const { data, setData, user, noOfPages } = useContext(AuthContext);
     const [filter, setFilter] = useState("all");
+    const pages = [...Array(noOfPages).keys()];
+    const [ currentPage, setCurrentPage ] = useState(0);
+
+    const handlePrev = () => {
+        if (currentPage > 0) {
+            setCurrentPage(currentPage - 1);
+        }
+    }
+
+    const handleNext = () => {
+        if (currentPage < pages.length - 1) {
+            setCurrentPage(currentPage + 1);
+        }
+    }
 
     const filteredAssignments = data?.filter((assignment) => {
         if (filter === "all") {
@@ -66,6 +81,9 @@ const Assignments = () => {
             })
         }
     }
+    
+    const startIndex = currentPage * 12;
+    const endIndex = Math.min(startIndex + 12, filteredAssignments?.length);
 
     return (
         <>
@@ -83,7 +101,7 @@ const Assignments = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3">
-                {filteredAssignments?.map((e, idx) => (
+                {filteredAssignments?.slice(startIndex, endIndex).map((e, idx) => (
                     <div key={idx} className="relative dark:text-white shadow-md">
                         <img className="h-38 md:h-28 border-t border-x w-full rounded-t" src={e.photoURL} alt="" />
                         <p className="absolute top-0 left-0 rounded-tl text-sm font-semibold text-white bg-blue-500 px-2 py-1">{e.marks}</p>
@@ -104,6 +122,15 @@ const Assignments = () => {
                         </div>
                     </div>
                 ))}
+            </div>
+            <div className=" flex justify-center items-center mt-10">
+                <button onClick={handlePrev} className="mr-2 border bg-primary text-white rounded-lg"><FaArrowAltCircleLeft size={23}/></button>
+                {
+                    pages?.map((page, idx) =>
+                        <button onClick={()=>setCurrentPage(page)} className={currentPage === page ? " px-2 mr-1 border border-primary bg-primary text-white rounded-lg" : " px-2 mr-1 border border-primary text-primary rounded-lg"} key={idx}>{page}</button>
+                    )
+                }
+                <button onClick={handleNext} className="ml-1 border bg-primary text-white rounded-lg"><FaArrowAltCircleRight size={23}/></button>
             </div>
         </>
     );
