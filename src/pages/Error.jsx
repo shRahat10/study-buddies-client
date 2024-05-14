@@ -16,9 +16,9 @@ const Error = () => {
             <Helmet>
                 <title>Study Buddies | Error</title>
             </Helmet>
-            <div className="flex flex-col justify-center items-center space-y-5 mt-20">
+            <div className="flex flex-col justify-center items-center space-y-5 mt-20 ">
                 {View}
-                <div className="text-center ">
+                <div className="text-center dark:text-white">
                     <p className="text-lg text-gray-700">Oops! It looks like the page you are looking for does not exist.</p>
                     <p className="text-lg text-gray-700">Do not worry, you can navigate back to the home page using the button below.</p>
                 </div>
