@@ -44,7 +44,7 @@ const AssignmentMarking = ({ onClose, submittedData }) => {
                     }).then(() => {
                         reset();
                         onClose();
-                        fetch(BASE_URL + '/submissions')
+                        fetch(BASE_URL + '/submissions' , { credentials: 'include' })
                             .then(res => res.json())
                             .then(updatedData => {
                                 setSubmissions(updatedData);
