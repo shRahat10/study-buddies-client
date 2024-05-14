@@ -6,7 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { BASE_URL } from "../constent/constent";
 import Swal from 'sweetalert2';
 import { AuthContext } from "../provider/AuthProvider";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 
 const UpdateAssignments = () => {
@@ -15,6 +15,7 @@ const UpdateAssignments = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const filteredData = data?.find((e) => e._id === id);
     const [dueDate, setDueDate] = useState(filteredData.dueDate);
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
         data.dueDate = dueDate;
@@ -41,6 +42,8 @@ const UpdateAssignments = () => {
                             .then(updatedData => {
                                 setData(updatedData);
                             })
+
+                        navigate("/assignments");
                     });
                 }
             })

@@ -31,6 +31,7 @@ const AssignmentMarking = ({ onClose, submittedData }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify(markedSubmission)
         })
             .then(res => res.json())

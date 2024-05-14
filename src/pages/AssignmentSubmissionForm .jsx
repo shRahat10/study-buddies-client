@@ -17,6 +17,7 @@ const AssignmentSubmissionForm = ({ onClose, data, user }) => {
         e.status = 'pending';
         e.obtainedMarks = null;
         e.feedback = null;
+        e.creatorEmail = data.email;
 
         console.log(e);
         fetch(BASE_URL + '/submissions', {
@@ -24,7 +25,6 @@ const AssignmentSubmissionForm = ({ onClose, data, user }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            credentials: 'include',
             body: JSON.stringify(e)
         })
         .then(res => res.json())

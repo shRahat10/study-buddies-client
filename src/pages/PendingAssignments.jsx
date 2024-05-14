@@ -3,10 +3,10 @@ import { AuthContext } from "../provider/AuthProvider";
 import AssignmentMarking from "./AssignmentMarking";
 
 const PendingAssignments = () => {
-    const { submissions } = useContext(AuthContext);
+    const { submissions, user } = useContext(AuthContext);
     const [selectedAssignment, setSelectedAssignment] = useState(null);
 
-    const pendingAssignments = submissions?.filter(e => e.status === 'pending');
+    const pendingAssignments = submissions?.filter(e => e.status === 'pending' && e.creatorEmail === user.email);
 
     const openMarkingModal = (assignment) => {
         setSelectedAssignment(assignment);
@@ -18,6 +18,7 @@ const PendingAssignments = () => {
 
     return (
         <div className="dark:text-white">
+            <h1 className="text-2xl font-bold text-center mb-6 dark:text-white">Pending Assignment: {pendingAssignments.length}</h1>
             <div className="grid grid-cols-4 items-center border-b-2 py-4 font-bold">
                 <h1>Title</h1>
                 <p className="place-self-center">Marks</p>
