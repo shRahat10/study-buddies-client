@@ -23,7 +23,7 @@ const PendingAssignments = () => {
                 <title>Study Buddies | Pending Assignments</title>
             </Helmet>
             <div className="dark:text-white">
-            <h1 className="text-2xl font-bold text-center mb-6 dark:text-white">Pending Assignment: {pendingAssignments.length}</h1>
+            <h1 className="text-2xl font-bold text-center mb-6 dark:text-white">Pending Assignment: {pendingAssignments?.length}</h1>
             <div className="grid grid-cols-4 items-center border-b-2 py-4 font-bold">
                 <h1>Title</h1>
                 <p className="place-self-center">Marks</p>
