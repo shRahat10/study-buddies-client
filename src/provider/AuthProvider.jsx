@@ -111,7 +111,7 @@ const AuthProvider = ({ children }) => {
     }, [token])
 
     const authInfo = {
-        data, setData, noOfPages, submissions, setSubmissions, user, loading, updateUserProfile, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
+        data, setData, noOfPages, setNoOfPages, submissions, setSubmissions, user, loading, updateUserProfile, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
     }
 
     return (

@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { TiEdit } from "react-icons/ti";
@@ -9,7 +9,7 @@ import { BASE_URL } from "../constent/constent";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight  } from "react-icons/fa";
 
 const Assignments = () => {
-    const { data, setData, user, noOfPages } = useContext(AuthContext);
+    const { data, setData, user, noOfPages, setNoOfPages } = useContext(AuthContext);
     const [filter, setFilter] = useState("all");
     const pages = [...Array(noOfPages).keys()];
     const [ currentPage, setCurrentPage ] = useState(0);
@@ -33,6 +33,12 @@ const Assignments = () => {
             return assignment.difficulty === filter;
         }
     });
+
+    useEffect(() => {
+        if (filteredAssignments) {
+            setNoOfPages(Math.ceil(filteredAssignments.length / 12));
+        }
+    }, [filteredAssignments, setNoOfPages])
 
     const handleDelete = (id) => {
         const filteredData = data?.find((e) => e._id === id)
