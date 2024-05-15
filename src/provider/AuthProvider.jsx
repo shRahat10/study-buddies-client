@@ -14,7 +14,8 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState(null);
     const [submissions, setSubmissions] = useState(null);
-    const [noOfPages , setNoOfPages] = useState(null);
+    const [noOfPages, setNoOfPages] = useState(null);
+    const [token, setToken] = useState(false);
 
     const googleSignIn = () => {
         // setLoading(true);
@@ -61,6 +62,7 @@ const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setToken(false);
             const userEmail = currentUser?.email || user?.email;
             const loggedUser = {
                 email: userEmail
@@ -74,9 +76,10 @@ const AuthProvider = ({ children }) => {
                 })
                     .then(res => {
                         console.log(res.data);
+                        setToken(true);
                     })
             }
-            else{
+            else {
                 axios.post(BASE_URL + '/logout', loggedUser, {
                     withCredentials: true
                 })
@@ -100,10 +103,12 @@ const AuthProvider = ({ children }) => {
     }, [])
 
     useEffect(() => {
-        fetch(BASE_URL + '/submissions' , { credentials: 'include' })
-            .then(res => res.json())
-            .then(data => setSubmissions(data))
-    }, [])
+        if (token) {
+            fetch(BASE_URL + '/submissions', { credentials: 'include' })
+                .then(res => res.json())
+                .then(data => setSubmissions(data))
+        }
+    }, [token])
 
     const authInfo = {
         data, setData, noOfPages, submissions, setSubmissions, user, loading, updateUserProfile, setLoading, googleSignIn, githubSignIn, userRegistration, userLogin, userLogout,
