@@ -70,61 +70,63 @@ const Register = () => {
     }
 
     return (
-        <div className=" mx-auto lg:mt-10 dark:text-white p-10 grid grid-cols-1 md:grid-cols-2">
+        <>
             <Helmet>
                 <title>Study Buddies | Register</title>
             </Helmet>
-            <div>{View}</div>
-            <form onSubmit={handleSubmit(onSubmit)} className=" space-y-6">
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text font-bold dark:text-white">Your name</span>
-                    </label>
-                    <input name="name" type="text" placeholder="Enter your name" className="bg-transparent input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("name", { required: true })} />
-                    {errors.name && <span className=" text-red-500">This field is required</span>}
-                </div>
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text font-bold dark:text-white">Photo URL</span>
-                    </label>
-                    <input name="photoUrl" type="text" placeholder="Enter your photo url" className="bg-transparent input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("photoUrl", { required: true })} />
-                    {errors.photoUrl && <span className=" text-red-500">This field is required</span>}
-                </div>
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text font-bold dark:text-white">Email address</span>
-                    </label>
-                    <input name="email" type="email" placeholder="Enter your email address" className="bg-transparent input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("email", { required: true })} />
-                    {errors.email && <span className=" text-red-500">This field is required</span>}
-                </div>
-                <div className="form-control">
-                    <label className="label">
-                        <span className="label-text font-bold dark:text-white">Password</span>
-                    </label>
-                    <span className=" flex relative">
-                        <input name="password" type={showPass ? 'text' : 'password'} placeholder="Enter your password" className=" bg-transparent w-full input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("password", { required: true })} />
-                        <span className=" absolute top-1/3 right-3" onClick={() => setShowPass(!showPass)}>
-                            {
-                                showPass ? <IoEyeOffOutline /> : <IoEyeOutline />
-                            }
+            <div className=" mx-auto lg:mt-10 dark:text-white p-10 grid grid-cols-1 md:grid-cols-2">
+                <div>{View}</div>
+                <form onSubmit={handleSubmit(onSubmit)} className=" space-y-6">
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-bold dark:text-white">Your name</span>
+                        </label>
+                        <input name="name" type="text" placeholder="Enter your name" className="bg-transparent input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("name", { required: true })} />
+                        {errors.name && <span className=" text-red-500">This field is required</span>}
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-bold dark:text-white">Photo URL</span>
+                        </label>
+                        <input name="photoUrl" type="text" placeholder="Enter your photo url" className="bg-transparent input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("photoUrl", { required: true })} />
+                        {errors.photoUrl && <span className=" text-red-500">This field is required</span>}
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-bold dark:text-white">Email address</span>
+                        </label>
+                        <input name="email" type="email" placeholder="Enter your email address" className="bg-transparent input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("email", { required: true })} />
+                        {errors.email && <span className=" text-red-500">This field is required</span>}
+                    </div>
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text font-bold dark:text-white">Password</span>
+                        </label>
+                        <span className=" flex relative">
+                            <input name="password" type={showPass ? 'text' : 'password'} placeholder="Enter your password" className=" bg-transparent w-full input rounded-none border-b-2 border-b-gray-300 focus:outline-none focus:border-0 focus:border-b-2 focus:border-b-primary" {...register("password", { required: true })} />
+                            <span className=" absolute top-1/3 right-3" onClick={() => setShowPass(!showPass)}>
+                                {
+                                    showPass ? <IoEyeOffOutline /> : <IoEyeOutline />
+                                }
+                            </span>
                         </span>
-                    </span>
-                    {errors.password && <span className=" text-red-500">This field is required</span>}
-                    {errorMessage && <span className=" text-red-500">{errorMessage}</span>}
-                </div>
-                <div className="form-control flex flex-row items-center">
-                    <input name="checkbox" type="checkbox" id="termsAndConditions" className="mr-2" {...register("checkbox", { required: true })} />
-                    <label htmlFor="termsAndConditions" className="cursor-pointer">
-                        Accept Term & Conditions
-                    </label>
-                </div>
-                {errors.checkbox && <span className=" text-red-500">Accept our term & conditions to proceed</span>}
-                <div className="form-control mt-6">
-                    <button className="btn text-white bg-primary hover:bg-transparent hover:border hover:border-primary hover:text-primary transition duration-300 ease-in-out">Register</button>
-                </div>
-                <p className=" mt-3 text-center">Already Have An Account ? <Link className=" text-red-500" to={'/login'}>Login</Link></p>
-            </form>
-        </div>
+                        {errors.password && <span className=" text-red-500">This field is required</span>}
+                        {errorMessage && <span className=" text-red-500">{errorMessage}</span>}
+                    </div>
+                    <div className="form-control flex flex-row items-center">
+                        <input name="checkbox" type="checkbox" id="termsAndConditions" className="mr-2" {...register("checkbox", { required: true })} />
+                        <label htmlFor="termsAndConditions" className="cursor-pointer">
+                            Accept Term & Conditions
+                        </label>
+                    </div>
+                    {errors.checkbox && <span className=" text-red-500">Accept our term & conditions to proceed</span>}
+                    <div className="form-control mt-6">
+                        <button className="btn text-white bg-primary hover:bg-transparent hover:border hover:border-primary hover:text-primary transition duration-300 ease-in-out">Register</button>
+                    </div>
+                    <p className=" mt-3 text-center">Already Have An Account ? <Link className=" text-red-500" to={'/login'}>Login</Link></p>
+                </form>
+            </div>
+        </>
     );
 };
 

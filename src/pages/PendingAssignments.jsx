@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import AssignmentMarking from "./AssignmentMarking";
+import { Helmet } from "react-helmet-async";
 
 const PendingAssignments = () => {
     const { submissions, user } = useContext(AuthContext);
@@ -17,7 +18,11 @@ const PendingAssignments = () => {
     }
 
     return (
-        <div className="dark:text-white">
+        <>
+            <Helmet>
+                <title>Study Buddies | Pending Assignments</title>
+            </Helmet>
+            <div className="dark:text-white">
             <h1 className="text-2xl font-bold text-center mb-6 dark:text-white">Pending Assignment: {pendingAssignments.length}</h1>
             <div className="grid grid-cols-4 items-center border-b-2 py-4 font-bold">
                 <h1>Title</h1>
@@ -40,6 +45,7 @@ const PendingAssignments = () => {
                 ))
             }
         </div>
+        </>
     );
 };
 
