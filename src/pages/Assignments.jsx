@@ -88,7 +88,7 @@ const Assignments = () => {
     return (
         <>
             <Helmet>
-                <title>Assignments</title>
+                <title>Study Buddies | Assignments</title>
             </Helmet>
             <h1 className="text-2xl font-bold text-center mb-6 dark:text-white">Assignments</h1>
             <div className="flex justify-end mb-4">
