@@ -111,8 +111,8 @@ const Navbar = () => {
     );
 
     return (
-        <div className="navbar px-0 bg-transparent py-6 dark:text-white" ref={navbarRef}>
-            <div className="navbar-start">
+        <div className="navbar flex justify-between px-0 bg-transparent py-6 dark:text-white" ref={navbarRef}>
+            <div className="">
                 <div className="dropdown">
                     <div tabIndex={0} className="pr-4 lg:hidden" onClick={toggleMenu}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -129,13 +129,12 @@ const Navbar = () => {
                 </p>
             </div>
 
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1 flex gap-8">
-                    {links}
-                </ul>
-            </div>
-
-            <div className="navbar-end">
+            <div className="">
+                <div className="hidden lg:flex">
+                    <ul className="menu menu-horizontal px-1 flex gap-8">
+                        {links}
+                    </ul>
+                </div>
                 <li className="px-6 block ">
                     {theme === "dark" ? (
                         <FiSun className="text-xl sm:text-3xl md:text-3xl text-white" onClick={handleTheme} />
