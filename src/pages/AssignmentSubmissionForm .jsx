@@ -25,6 +25,7 @@ const AssignmentSubmissionForm = ({ onClose, data, user }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
+            credentials: 'include',
             body: JSON.stringify(e)
         })
         .then(res => res.json())
