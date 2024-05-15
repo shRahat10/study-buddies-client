@@ -65,7 +65,7 @@ const Banner = () => {
                 >
                     <SwiperSlide style={{ backgroundImage: `url(${banner1})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div className="bg-gray-900 bg-opacity-50 p-10 rounded h-80 flex flex-col justify-center">
-                            <div className='App h-10'>
+                            <div className='App h-20 md:h-10'>
                                 <span className="text-white text-2xl font-bold mb-6">{head1}</span>
                                 <Cursor cursorColor='red' />
                             </div>
@@ -77,7 +77,7 @@ const Banner = () => {
                     </SwiperSlide>
                     <SwiperSlide style={{ backgroundImage: `url(${banner2})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div className="bg-gray-900 bg-opacity-50 p-10 rounded h-80 flex flex-col justify-center">
-                            <div className='App h-10'>
+                            <div className='App h-20 md:h-10'>
                                 <span className="text-white text-2xl font-bold mb-6">{head2}</span>
                                 <Cursor cursorColor='red' />
                             </div>
@@ -89,7 +89,7 @@ const Banner = () => {
                     </SwiperSlide>
                     <SwiperSlide style={{ backgroundImage: `url(${banner3})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                         <div className="bg-gray-900 bg-opacity-50 p-10 rounded h-80 flex flex-col justify-center">
-                            <div className='App h-10'>
+                            <div className='App h-20 md:h-10'>
                                 <span className="text-white text-2xl font-bold mb-6">{head3}</span>
                                 <Cursor cursorColor='red' />
                             </div>
