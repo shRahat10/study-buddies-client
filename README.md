@@ -1,33 +1,47 @@
 # Study Buddies
 
 ## Website Description
+
 The Study Buddies platform streamlines assignment management, allowing users to create, submit, and mark assignments. With features like assignment creation, submission, marking, and user authentication, it offers a seamless experience for everyone.
 
-## Live Site URL
-``` https://study-buddies-7ea63.web.app/ ```
+# Live Link
+
+```bash
+https://study-buddies-7ea63.web.app
+```
+
+# Server Side Repository
+
+```bash
+https://github.com/shRahat10/study-buddies-server
+```
 
 ## Features
 
 **Home Page:**
-   - **Navbar:** Displays different links based on user authentication status. Allows access to assignments, login, register before logging in, and assignments, create assignments, pending assignments, and user profile options after logging in.
-   - **Banner Section:** Presents a visually appealing section at the top of the page, adhering to the project theme.
-   - **Feature Section:** Contains cards showcasing various features of the project.
-   - **FAQ Section:** Provides answers to frequently asked questions.
-   - **Footer:** Displays copyright information and relevant links.
+
+- **Navbar:** Displays different links based on user authentication status. Allows access to assignments, login, register before logging in, and assignments, create assignments, pending assignments, and user profile options after logging in.
+- **Banner Section:** Presents a visually appealing section at the top of the page, adhering to the project theme.
+- **Feature Section:** Contains cards showcasing various features of the project.
+- **FAQ Section:** Provides answers to frequently asked questions.
+- **Footer:** Displays copyright information and relevant links.
 
 **Create Assignment Page:**
-   - Allows logged-in users to create assignments for all users.
-   - Assignment creation form includes fields for title, description, marks, thumbnail image URL, assignment difficulty level (dropdown/select input field), and due date (using react-datepicker).
-   - Displays a success message upon successful assignment creation.
+
+- Allows logged-in users to create assignments for all users.
+- Assignment creation form includes fields for title, description, marks, thumbnail image URL, assignment difficulty level (dropdown/select input field), and due date (using react-datepicker).
+- Displays a success message upon successful assignment creation.
 
 **Assignments Page:**
-   - Displays all assignments created by any user.
-   - Offers filtering functionality based on assignment difficulty level.
-   - Each assignment card includes a thumbnail, title, marks, assignment difficulty level, and options for delete, update, and view assignment.
-   - Provides functionality to delete assignments created by the current user, with confirmation modal, success, and error messages.
-   - Allows any user to update any assignment, with pre-filled input fields and success message upon update.
+
+- Displays all assignments created by any user.
+- Offers filtering functionality based on assignment difficulty level.
+- Each assignment card includes a thumbnail, title, marks, assignment difficulty level, and options for delete, update, and view assignment.
+- Provides functionality to delete assignments created by the current user, with confirmation modal, success, and error messages.
+- Allows any user to update any assignment, with pre-filled input fields and success message upon update.
 
 **View Assignment Button Functionality:**
+
 - Upon clicking the "View Assignment" button, the user is directed to the assignment details page, which is a private dynamic page.
 - On this page, users can view the assignment details provided during assignment creation.
 - Additionally, the "Take Assignment" button is displayed, allowing users to submit the assignment.
@@ -36,16 +50,19 @@ The Study Buddies platform streamlines assignment management, allowing users to 
 - By default, every submitted assignment is in pending status, with the user's email saved along with the assignment for identification purposes.
 
 **My Submitted/Attempted Assignment Page:**
-   - Displays assignments submitted by the specific logged-in user.
-   - Shows assignment title, status, marks, obtained marks, and feedback (if provided).
+
+- Displays assignments submitted by the specific logged-in user.
+- Shows assignment title, status, marks, obtained marks, and feedback (if provided).
 
 **Pending Assignments Page:**
-   - Lists all pending assignments submitted by any user.
-   - Each assignment includes title, marks, examinee name, and a "give mark" button.
-   - Allows marking of assignments, with options to provide marks and feedback.
-   - Updates assignment status to completed after marking.
+
+- Lists all pending assignments submitted by any user.
+- Each assignment includes title, marks, examinee name, and a "give mark" button.
+- Allows marking of assignments, with options to provide marks and feedback.
+- Updates assignment status to completed after marking.
 
 **Give Mark Button Functionality:**
+
 - On the pending assignments page, every submitted assignment includes the assignment title, marks, examinee name (who submitted the assignment), and a "Give Mark" button.
 - Clicking on the "Give Mark" button opens a modal (or navigates to a new page) where the user can view the PDF/docs link and notes submitted by the examinee.
 - The modal/page also contains input fields for providing marks and feedback.
@@ -54,9 +71,10 @@ The Study Buddies platform streamlines assignment management, allowing users to 
 - Upon marking an assignment, the status of the assignment is changed to completed, indicating that it has been marked.
 
 **Authentication Pages (Login and Registration):**
-   - Public pages allowing users to log in or register.
-   - Implements Firebase email/password-based authentication, Google authentication, and GitHub authentication.
-   - Includes validation in authentication-related forms.
+
+- Public pages allowing users to log in or register.
+- Implements Firebase email/password-based authentication, Google authentication, and GitHub authentication.
+- Includes validation in authentication-related forms.
 
 **Validation:** Implemented validation in create assignment form and authentication-related forms.
 
@@ -78,7 +96,7 @@ These features provide users with a seamless and intuitive experience throughout
 - **React Router DOM**: Library for routing in React applications.
 - **react-hook-form**: Library for managing form state in React.
 - **react-datepicker**: Library for datepicker components in React.
-- **react-icons: Library for icon components in React.
+- \*\*react-icons: Library for icon components in React.
 - **react-helmet-async**: Library for managing document head tags in React applications.
 - **sweetalert2**: Library for displaying modal dialogs in web applications.
 - **Tailwind CSS**: Utility-first CSS framework used for styling.
@@ -94,4 +112,3 @@ These features provide users with a seamless and intuitive experience throughout
 - **cookie-parser**: Middleware for parsing cookies attached to the client request object.
 - **MongoDB**: NoSQL database used for storing and managing data.
 - **dotenv**: Module for loading environment variables from a .env file into process.env.
-
